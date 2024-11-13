@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação de Notas</title>
+</head>
+<body>
+    <h2>Informe sua Nota</h2>
+    <form action="" method="post">
+        <label for="nota">Nota (0 a 10):</label>
+        <input type="number" id="nota" name="nota" min="0" max="10" required><br><br>
+
+        <input type="submit" value="Classificar">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nota = $_POST['nota'];
+
+        switch (true) {
+            case ($nota == 10):
+                echo "Classificação: A";
+                break;
+            case ($nota == 9):
+                echo "Classificação: B";
+                break;
+            case ($nota >= 7 && $nota <= 8):
+                echo "Classificação: C";
+                break;
+            case ($nota >= 5 && $nota <= 6):
+                echo "Classificação: D";
+                break;
+            case ($nota >= 0 && $nota <= 4):
+                echo "Classificação: E";
+                break;
+            default:
+                echo "Nota inválida!";
+        }
+    }
+    ?>
+</body>
+</html>
